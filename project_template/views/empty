@@ -1,0 +1,7 @@
+Put the view files here.
+
+The view for a specific controller/action should be inside the pluralized_lowercased_underscored_controller directory and named as lowecased_action.html
+
+For example, for the controller "cars" and action "list_models," there should be a file named list_models.html inside the cars directory inside this view folder.
+
+For wordpress admin views, you may want to wrap the view inside '<div class="wrap"> </div>'

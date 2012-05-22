@@ -1,0 +1,12 @@
+<div class="wrap">
+    <h2>Wordpress MVC</h2>
+    <hr />
+    
+    <form method="post" action="?page=wpmvc/new_plugin">
+        <?php $id = uniqid(); ?>
+        <label for="<?php echo $id ?>">Create a new WPMVC plugin</label>
+        <input type="text" name="plugin_name" size="40" maxlength="32" />
+        <input type="submit" value="Generate template project" />
+    </form>
+    
+</div>

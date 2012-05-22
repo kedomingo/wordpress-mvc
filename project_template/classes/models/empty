@@ -1,0 +1,4 @@
+Put your models here.
+Model class names should be SingularCamelCased and the file name should be the same as the model name with .php extension
+Example:
+class Car is saved in Car.php

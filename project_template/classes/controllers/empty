@@ -1,0 +1,4 @@
+Put your controllers here.
+Controller class names should be PluralizedCamelCasedController and the file name should be the same as the controller name with .php extension
+Example:
+class CarsController is saved in CarsController.php
