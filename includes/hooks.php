@@ -61,7 +61,7 @@ if(is_admin())
     add_filter( 'menu_order', function( ){
         
         global $menu, $submenu, $parent_file, $plugin_page;
-        
+                
         if ( !empty($_GET['original_page']) )
         {
             // This is the original path before assigning the page
@@ -97,6 +97,7 @@ if(is_admin())
                     }
                 }
             }
+            
             if( empty($highlighted_page) ):
             
                 foreach( $submenu as $parentmenu => $submenuitems )
@@ -119,17 +120,26 @@ if(is_admin())
                         }
                         
                         // Nothing?
-                        // See if the page's REFERER has any "relatives" from the menu
+                        // See if the page's REFERER has an exact match or
+                        // any "relatives" from the menu
+                        
+                        // Get the route from the referers "page" GET parameter
+                        // parse_str creates variables from the params
                         parse_str(array_pop(explode('?', $_SERVER['HTTP_REFERER'])));
-                        if( empty( $page  ) )
+                        // Found a relative? use that (and break)
+                        if (!empty( $page ))
+                        {
+                            // TODO: FIND MATCHES AND RELATIVES FOR $page
+                            $highlighted_page = $page;
                             break 2;
-                        
-                        $original_page = $page;
-                        
+                        }
                     }
                 }
             endif;
             
+            // Fool wordpress into thinking that the current page is
+            // the one in $highlighted_page so it will highlight that
+            // from the menu item
             if( !empty($highlighted_page) )
             {
                 $_GET['page'] = $highlighted_page;
