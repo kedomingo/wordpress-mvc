@@ -91,7 +91,7 @@ class View {
         // 
         // For template setting, make sure the view knows where the template is
         //        
-        if ( $key == 'template' and $__origin == null )
+        if ( $var == 'template' and $__origin == null )
         {
             // Get the plugin root of the calling class
             $trace = array_shift(array_shift(debug_backtrace()));

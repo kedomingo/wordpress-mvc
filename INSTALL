@@ -1,0 +1,36 @@
+Before activating this plugin, you need to do a four things:
+
+1) Rename the wpmvc folder inside your plugins directory such that
+it is listed FIRST before any other plugins. The way wordpress works is
+that it runs through all plugins inside the plugins directory
+alphabetically. Failure to do so will prevent wpmvc-based plugins to
+fulfill their dependencies to this plugin. For example you can
+rename it as "aaaawpmvc" to make sure it is always first in the list.
+
+2) Copy wpmvc_handler.php to your wordpress root directory (the one
+containing the folders wp-content, wp-includes, etc).
+
+3) Insert this
+code
+
+RewriteRule r/(.+) wpmvc_handler.php [L]
+
+just before the line with "RewriteRule ^index\.php$ - [L]" or something
+similar. This is for routing pages.
+
+4) Create a new wordpress page with content "[wpmvc]" (without quotes).
+Depending on the permalink generated for this page, you will have to
+edit wpmvc_handler.php and change the "wpmvc" in the line
+
+$_SERVER['REQUEST_URI'] = "{$subfolder}/wpmvc/?{$params}";
+
+to the appropriate permalink.
+
+<Please read USAGE>
+
+You can now activate the WPMVC plugin and generate your first WPMVC-
+based plugin! Go to Settings > WPMVC, put the name of your first plugin
+as "Hello World" and click on Generate Template Project. This copies
+the template project to your plugins directory. You can already see
+your new plugin in the plugins list. You can activate this and
+start developing this plugin.

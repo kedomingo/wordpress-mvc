@@ -99,13 +99,6 @@ class WPMVC {
             
         }
         
-        // Assign the view to the phantom sidebar link
-        // This is necessary so wordpress won't issue an error that the
-        // page does not exist. The page MUST be assigned to an existing menu item
-        $_GET['original_page'] = $_GET['page'];
-        $_GET['page'] = 'wpmvc';
-        // todo, assign parent_page when the menu exists for original_page
-        
         // Errors in controller? or view is unset inside the controller?
         if( is_object($controller) and !empty($controller->error) or empty($controller->view) )
         {
@@ -131,6 +124,12 @@ class WPMVC {
             // is to an admin page
             if ( Route::is_admin() )
             {
+                // Assign the view to the phantom sidebar link
+                // This is necessary so wordpress won't issue an error that the
+                // page does not exist. The page MUST be assigned to an existing menu item
+                $_GET['original_page'] = $_GET['page'];
+                $_GET['page'] = 'wpmvc';
+                
                 // We must change the page seen by wordpress to be able to show the output
                 //$_GET['page'] = 'wpmvc';
                 add_action('all_admin_notices', array('View', 'render'));
