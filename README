@@ -1,1 +1,6 @@
-Test
+This is an implementation of popular PHP frameworks for developing
+wordpress plugins. A mix of CakePHP, CodeIgniter, and minimal homebrew
+functions and attributes will make your wordpress plugin development
+fun and pain-free.
+
+Give it a try.
